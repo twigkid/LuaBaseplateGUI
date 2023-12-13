@@ -1,0 +1,179 @@
+local screen_gui = Instance.new("ScreenGui")
+screen_gui.IgnoreGuiInset = false
+screen_gui.ResetOnSpawn = true
+screen_gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+screen_gui.Parent = game.Players.LocalPlayer.PlayerGui
+
+local frame = Instance.new("Frame")
+frame.BackgroundColor3 = Color3.new(1, 1, 1)
+frame.BorderColor3 = Color3.new(0, 0, 0)
+frame.BorderSizePixel = 0
+frame.Position = UDim2.new(0.364211738, 0, 0.270573556, 0)
+frame.Size = UDim2.new(0, 471, 0, 368)
+frame.Visible = true
+frame.Parent = screen_gui
+
+local wr = Instance.new("TextButton")
+wr.Font = Enum.Font.Unknown
+wr.Text = "Ownership Wrecker"
+wr.TextColor3 = Color3.new(1, 1, 1)
+wr.TextScaled = true
+wr.TextSize = 14
+wr.TextWrapped = true
+wr.BackgroundColor3 = Color3.new(0.760784, 0.760784, 0.760784)
+wr.BorderColor3 = Color3.new(0, 0, 0)
+wr.BorderSizePixel = 0
+wr.Position = UDim2.new(0.0324460827, 0, 0.14484024, 0)
+wr.Size = UDim2.new(0, 166, 0, 50)
+wr.Visible = true
+wr.Name = "WR"
+wr.Parent = frame
+
+local uicorner = Instance.new("UICorner")
+uicorner.Parent = wr
+
+local uigradient = Instance.new("UIGradient")
+uigradient.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.new(1, 1, 1)), ColorSequenceKeypoint.new(0.48788928985595703, Color3.new(0.745098, 0.745098, 0.745098)), ColorSequenceKeypoint.new(1, Color3.new(1, 1, 1))})
+uigradient.Rotation = 45
+uigradient.Parent = frame
+
+local frame_2 = Instance.new("Frame")
+frame_2.BackgroundColor3 = Color3.new(0.670588, 0.670588, 0.670588)
+frame_2.BorderColor3 = Color3.new(0, 0, 0)
+frame_2.BorderSizePixel = 0
+frame_2.Size = UDim2.new(0, 471, 0, 44)
+frame_2.Visible = true
+frame_2.Parent = frame
+
+local text_label = Instance.new("TextLabel")
+text_label.Font = Enum.Font.Unknown
+text_label.Text = "Skidbeater Silver a0.1"
+text_label.TextColor3 = Color3.new(1, 1, 1)
+text_label.TextScaled = true
+text_label.TextSize = 14
+text_label.TextWrapped = true
+text_label.TextXAlignment = Enum.TextXAlignment.Left
+text_label.BackgroundColor3 = Color3.new(1, 1, 1)
+text_label.BackgroundTransparency = 1
+text_label.BorderColor3 = Color3.new(0, 0, 0)
+text_label.BorderSizePixel = 0
+text_label.Size = UDim2.new(0, 471, 0, 44)
+text_label.Visible = true
+text_label.Parent = frame_2
+
+local uigradient_2 = Instance.new("UIGradient")
+uigradient_2.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.new(1, 1, 1)), ColorSequenceKeypoint.new(0.48788928985595703, Color3.new(0.6, 0.6, 0.6)), ColorSequenceKeypoint.new(1, Color3.new(1, 1, 1))})
+uigradient_2.Rotation = 25
+uigradient_2.Parent = text_label
+
+local local_script = Instance.new("LocalScript")
+local_script.Parent = frame
+
+local smooth_drag = Instance.new("LocalScript")
+smooth_drag.Name = "SmoothDrag"
+smooth_drag.Parent = frame
+
+--//Modules
+
+local modules = {}
+
+--// Scripts
+
+-- LocalScript
+task.spawn(function()
+	local script = local_script
+
+	local oldreq = require
+	local function require(target)
+		if modules[target] then
+			return modules[target]()
+		end
+		return oldreq(target)
+	end
+
+	local P = game.Players.LocalPlayer
+	local C = P.Character
+	
+	P.CharacterAdded:Connect(function(M)
+		C = M
+	end)
+	local A = false
+	
+	local MaxSim_Radius = 1000
+	
+	local function NWreck()
+		task.spawn(function()
+			local Root = C:FindFirstChildOfClass("Humanoid").RootPart
+			if Root and A == false then
+				A = true
+				local Past = Root.CFrame
+				workspace.CurrentCamera.CameraType = Enum.CameraType.Scriptable
+				Root.CFrame = Root.CFrame * CFrame.new(MaxSim_Radius * 4, 0, MaxSim_Radius * 4)
+				Root.CFrame = CFrame.new(Root.CFrame.X, workspace.FallenPartsDestroyHeight + 10, Root.CFrame.Z)
+				task.wait(1 / 20)
+				Root.Anchored = true
+				task.wait(1)
+				Root.Anchored = false
+				workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
+				Root.CFrame = Past
+				A = false
+			end
+		end)
+	end
+	
+	script.Parent.WR.MouseButton1Down:Connect(function()
+		NWreck()
+	end)
+end)
+
+-- SmoothDrag
+task.spawn(function()
+	local script = smooth_drag
+
+	local oldreq = require
+	local function require(target)
+		if modules[target] then
+			return modules[target]()
+		end
+		return oldreq(target)
+	end
+	local Drag = script.Parent
+	gsCoreGui = game:GetService("CoreGui")
+	gsTween = game:GetService("TweenService")
+	local UserInputService = game:GetService("UserInputService")
+		local dragging
+		local dragInput
+		local dragStart
+		local startPos
+		local function update(input)
+			local delta = input.Position - dragStart
+			local dragTime = 0.04
+			local SmoothDrag = {}
+			SmoothDrag.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+			local dragSmoothFunction = gsTween:Create(Drag, TweenInfo.new(dragTime, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), SmoothDrag)
+			dragSmoothFunction:Play()
+		end
+		Drag.InputBegan:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				dragging = true
+				dragStart = input.Position
+				startPos = Drag.Position
+				input.Changed:Connect(function()
+					if input.UserInputState == Enum.UserInputState.End then
+						dragging = false
+					end
+				end)
+			end
+		end)
+		Drag.InputChanged:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+				dragInput = input
+			end
+		end)
+		UserInputService.InputChanged:Connect(function(input)
+			if input == dragInput and dragging and Drag.Size then
+				update(input)
+			end
+		end)
+	
+end)
