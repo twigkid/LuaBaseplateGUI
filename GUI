@@ -1,77 +1,461 @@
+--[[
+	Roblox2Lua
+	----------
+	
+	This code was generated using
+	Deluct's Roblox2Lua plugin.
+]]--
+
+--// Instances
+
 local screen_gui = Instance.new("ScreenGui")
-screen_gui.IgnoreGuiInset = false
+screen_gui.IgnoreGuiInset = true
+screen_gui.ScreenInsets = Enum.ScreenInsets.None
 screen_gui.ResetOnSpawn = true
 screen_gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 screen_gui.Parent = game.Players.LocalPlayer.PlayerGui
 
-local frame = Instance.new("Frame")
-frame.BackgroundColor3 = Color3.new(1, 1, 1)
-frame.BorderColor3 = Color3.new(0, 0, 0)
-frame.BorderSizePixel = 0
-frame.Position = UDim2.new(0.364211738, 0, 0.270573556, 0)
-frame.Size = UDim2.new(0, 471, 0, 368)
-frame.Visible = true
-frame.Parent = screen_gui
+local main = Instance.new("Frame")
+main.BackgroundColor3 = Color3.new(1, 1, 1)
+main.BackgroundTransparency = 1
+main.BorderColor3 = Color3.new(0, 0, 0)
+main.BorderSizePixel = 0
+main.Position = UDim2.new(0.330827057, 0, 0.325925916, 0)
+main.Size = UDim2.new(0, 494, 0, 282)
+main.Visible = true
+main.Name = "Main"
+main.Parent = screen_gui
 
-local wr = Instance.new("TextButton")
-wr.Font = Enum.Font.Unknown
-wr.Text = "Ownership Wrecker"
-wr.TextColor3 = Color3.new(1, 1, 1)
-wr.TextScaled = true
-wr.TextSize = 14
-wr.TextWrapped = true
-wr.BackgroundColor3 = Color3.new(0.760784, 0.760784, 0.760784)
-wr.BorderColor3 = Color3.new(0, 0, 0)
-wr.BorderSizePixel = 0
-wr.Position = UDim2.new(0.0324460827, 0, 0.14484024, 0)
-wr.Size = UDim2.new(0, 166, 0, 50)
-wr.Visible = true
-wr.Name = "WR"
-wr.Parent = frame
-
-local uicorner = Instance.new("UICorner")
-uicorner.Parent = wr
+local top_bar = Instance.new("Frame")
+top_bar.BackgroundColor3 = Color3.new(1, 0, 1)
+top_bar.BorderColor3 = Color3.new(0, 0, 0)
+top_bar.BorderSizePixel = 0
+top_bar.Size = UDim2.new(0, 494, 0, 32)
+top_bar.Visible = true
+top_bar.Name = "TopBar"
+top_bar.Parent = main
 
 local uigradient = Instance.new("UIGradient")
-uigradient.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.new(1, 1, 1)), ColorSequenceKeypoint.new(0.48788928985595703, Color3.new(0.745098, 0.745098, 0.745098)), ColorSequenceKeypoint.new(1, Color3.new(1, 1, 1))})
-uigradient.Rotation = 45
-uigradient.Parent = frame
+uigradient.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.new(0, 0, 0)), ColorSequenceKeypoint.new(1, Color3.new(1, 1, 1))})
+uigradient.Rotation = 180
+uigradient.Parent = top_bar
 
-local frame_2 = Instance.new("Frame")
-frame_2.BackgroundColor3 = Color3.new(0.670588, 0.670588, 0.670588)
-frame_2.BorderColor3 = Color3.new(0, 0, 0)
-frame_2.BorderSizePixel = 0
-frame_2.Size = UDim2.new(0, 471, 0, 44)
-frame_2.Visible = true
-frame_2.Parent = frame
+local pt = Instance.new("TextButton")
+pt.Font = Enum.Font.SourceSans
+pt.Text = "🍊"
+pt.TextColor3 = Color3.new(0, 0, 0)
+pt.TextScaled = true
+pt.TextSize = 14
+pt.TextWrapped = true
+pt.BackgroundColor3 = Color3.new(0.14902, 0.14902, 0.14902)
+pt.BackgroundTransparency = 1
+pt.BorderColor3 = Color3.new(0, 0, 0)
+pt.BorderSizePixel = 0
+pt.Position = UDim2.new(0.0141700404, 0, 0.125, 0)
+pt.Size = UDim2.new(0, 23, 0, 23)
+pt.Visible = true
+pt.Name = "PT"
+pt.Parent = top_bar
+
+local uicorner = Instance.new("UICorner")
+uicorner.CornerRadius = UDim.new(0, 2)
+uicorner.Parent = pt
+
+local tabs = Instance.new("ScrollingFrame")
+tabs.CanvasSize = UDim2.new(55, 0, 0, 0)
+tabs.ScrollBarImageColor3 = Color3.new(0, 0, 0)
+tabs.ScrollBarThickness = 1
+tabs.Active = true
+tabs.BackgroundColor3 = Color3.new(1, 1, 1)
+tabs.BackgroundTransparency = 1
+tabs.BorderColor3 = Color3.new(0, 0, 0)
+tabs.BorderSizePixel = 0
+tabs.Position = UDim2.new(0.0728744939, 0, 0.125, 0)
+tabs.Size = UDim2.new(0, 458, 0, 23)
+tabs.Visible = true
+tabs.Name = "Tabs"
+tabs.Parent = top_bar
+
+local re = Instance.new("TextButton")
+re.Font = Enum.Font.Gotham
+re.Text = "RemoteEvents"
+re.TextColor3 = Color3.new(1, 1, 1)
+re.TextSize = 14
+re.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
+re.BorderColor3 = Color3.new(0, 0, 0)
+re.BorderSizePixel = 0
+re.Size = UDim2.new(0, 104, 1, 0)
+re.Visible = true
+re.Name = "RE"
+re.Parent = tabs
+
+local uicorner_2 = Instance.new("UICorner")
+uicorner_2.CornerRadius = UDim.new(0, 3)
+uicorner_2.Parent = re
+
+local uilist_layout = Instance.new("UIListLayout")
+uilist_layout.Padding = UDim.new(0.00009999999747378752, 0)
+uilist_layout.FillDirection = Enum.FillDirection.Horizontal
+uilist_layout.SortOrder = Enum.SortOrder.LayoutOrder
+uilist_layout.Parent = tabs
+
+local ne = Instance.new("TextButton")
+ne.Font = Enum.Font.Gotham
+ne.Text = "Network"
+ne.TextColor3 = Color3.new(1, 1, 1)
+ne.TextSize = 14
+ne.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
+ne.BorderColor3 = Color3.new(0, 0, 0)
+ne.BorderSizePixel = 0
+ne.Size = UDim2.new(0, 104, 1, 0)
+ne.Visible = true
+ne.Name = "NE"
+ne.Parent = tabs
+
+local uicorner_3 = Instance.new("UICorner")
+uicorner_3.CornerRadius = UDim.new(0, 3)
+uicorner_3.Parent = ne
+
+local uicorner_4 = Instance.new("UICorner")
+uicorner_4.CornerRadius = UDim.new(0, 4)
+uicorner_4.Parent = top_bar
+
+local back_ma = Instance.new("Frame")
+back_ma.BackgroundColor3 = Color3.new(0.168627, 0.168627, 0.168627)
+back_ma.BorderColor3 = Color3.new(0, 0, 0)
+back_ma.BorderSizePixel = 0
+back_ma.Position = UDim2.new(0.000867588795, 0, 0.0957446843, 0)
+back_ma.Size = UDim2.new(0, 494, 0, 255)
+back_ma.Visible = true
+back_ma.Name = "BackMa"
+back_ma.Parent = main
+
+local uicorner_5 = Instance.new("UICorner")
+uicorner_5.CornerRadius = UDim.new(0, 4)
+uicorner_5.Parent = back_ma
+
+local uicorner_6 = Instance.new("UICorner")
+uicorner_6.CornerRadius = UDim.new(0, 4)
+uicorner_6.Parent = main
+
+local squarify = Instance.new("Frame")
+squarify.BackgroundColor3 = Color3.new(1, 0, 1)
+squarify.BorderColor3 = Color3.new(0, 0, 0)
+squarify.BorderSizePixel = 0
+squarify.Position = UDim2.new(0, 0, 0.0957446843, 0)
+squarify.Size = UDim2.new(0, 494, 0, 5)
+squarify.Visible = true
+squarify.Name = "Squarify"
+squarify.Parent = main
+
+local uigradient_2 = Instance.new("UIGradient")
+uigradient_2.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.new(0, 0, 0)), ColorSequenceKeypoint.new(1, Color3.new(1, 1, 1))})
+uigradient_2.Rotation = 180
+uigradient_2.Parent = squarify
+
+local tabs_2 = Instance.new("Frame")
+tabs_2.BackgroundColor3 = Color3.new(0.121569, 0.121569, 0.121569)
+tabs_2.BorderColor3 = Color3.new(0, 0, 0)
+tabs_2.BorderSizePixel = 0
+tabs_2.Position = UDim2.new(0.0161943324, 0, 0.132165253, 0)
+tabs_2.Size = UDim2.new(0, 479, 0, 233)
+tabs_2.Visible = true
+tabs_2.Name = "Tabs"
+tabs_2.Parent = main
+
+local uicorner_7 = Instance.new("UICorner")
+uicorner_7.Parent = tabs_2
+
+local re_2 = Instance.new("Frame")
+re_2.BackgroundColor3 = Color3.new(1, 1, 1)
+re_2.BackgroundTransparency = 1
+re_2.BorderColor3 = Color3.new(0, 0, 0)
+re_2.BorderSizePixel = 0
+re_2.Size = UDim2.new(1, 0, 1, 0)
+re_2.Visible = false
+re_2.Name = "RE"
+re_2.Parent = tabs_2
+
+local explorer = Instance.new("Frame")
+explorer.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
+explorer.BorderColor3 = Color3.new(0, 0, 0)
+explorer.BorderSizePixel = 0
+explorer.Position = UDim2.new(0.0250521284, 0, 0.034335155, 0)
+explorer.Size = UDim2.new(0, 122, 0, 215)
+explorer.Visible = true
+explorer.Name = "Explorer"
+explorer.Parent = re_2
+
+local scroller = Instance.new("ScrollingFrame")
+scroller.ScrollBarImageColor3 = Color3.new(0, 0, 0)
+scroller.Active = true
+scroller.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
+scroller.BackgroundTransparency = 1
+scroller.BorderColor3 = Color3.new(0, 0, 0)
+scroller.BorderSizePixel = 0
+scroller.Size = UDim2.new(1, 0, 1, 0)
+scroller.Visible = true
+scroller.Name = "Scroller"
+scroller.Parent = explorer
+
+local uicorner_8 = Instance.new("UICorner")
+uicorner_8.CornerRadius = UDim.new(0, 4)
+uicorner_8.Parent = scroller
+
+local text_button = Instance.new("TextButton")
+text_button.Font = Enum.Font.Gotham
+text_button.Text = "R Name"
+text_button.TextColor3 = Color3.new(1, 1, 1)
+text_button.TextScaled = true
+text_button.TextSize = 14
+text_button.TextWrapped = true
+text_button.TextXAlignment = Enum.TextXAlignment.Left
+text_button.BackgroundColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+text_button.BorderColor3 = Color3.new(0, 0, 0)
+text_button.BorderSizePixel = 0
+text_button.Size = UDim2.new(0, 108, 0, 20)
+text_button.Visible = true
+text_button.Parent = scroller
+
+local uicorner_9 = Instance.new("UICorner")
+uicorner_9.Parent = text_button
+
+local uicorner_10 = Instance.new("UICorner")
+uicorner_10.Parent = explorer
+
+local details = Instance.new("Frame")
+details.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
+details.BorderColor3 = Color3.new(0, 0, 0)
+details.BorderSizePixel = 0
+details.Position = UDim2.new(0.325678498, 0, 0.0343346335, 0)
+details.Size = UDim2.new(0, 315, 0, 215)
+details.Visible = true
+details.Name = "Details"
+details.Parent = re_2
+
+local uicorner_11 = Instance.new("UICorner")
+uicorner_11.Parent = details
+
+local fire = Instance.new("TextButton")
+fire.Font = Enum.Font.Gotham
+fire.Text = "Fire"
+fire.TextColor3 = Color3.new(1, 1, 1)
+fire.TextScaled = true
+fire.TextSize = 14
+fire.TextWrapped = true
+fire.BackgroundColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+fire.BorderColor3 = Color3.new(0, 0, 0)
+fire.BorderSizePixel = 0
+fire.Position = UDim2.new(0.0285714287, 0, 0.827906966, 0)
+fire.Size = UDim2.new(0, 144, 0, 26)
+fire.Visible = true
+fire.Name = "Fire"
+fire.Parent = details
+
+local uicorner_12 = Instance.new("UICorner")
+uicorner_12.Parent = fire
+
+local code = Instance.new("TextBox")
+code.Font = Enum.Font.Gotham
+code.Text = ""
+code.TextColor3 = Color3.new(1, 1, 1)
+code.TextSize = 14
+code.TextXAlignment = Enum.TextXAlignment.Left
+code.TextYAlignment = Enum.TextYAlignment.Top
+code.BackgroundColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+code.BorderColor3 = Color3.new(0, 0, 0)
+code.BorderSizePixel = 0
+code.Position = UDim2.new(0.0285714287, 0, 0.246511623, 0)
+code.Size = UDim2.new(0, 297, 0, 117)
+code.Visible = true
+code.Name = "Code"
+code.Parent = details
+
+local uicorner_13 = Instance.new("UICorner")
+uicorner_13.Parent = code
+
+local rename = Instance.new("TextLabel")
+rename.Font = Enum.Font.Gotham
+rename.Text = "Name: nil"
+rename.TextColor3 = Color3.new(1, 1, 1)
+rename.TextSize = 14
+rename.TextXAlignment = Enum.TextXAlignment.Left
+rename.BackgroundColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+rename.BorderColor3 = Color3.new(0, 0, 0)
+rename.BorderSizePixel = 0
+rename.Position = UDim2.new(0.0285714287, 0, 0.0604651161, 0)
+rename.Size = UDim2.new(0, 297, 0, 29)
+rename.Visible = true
+rename.Name = "REName"
+rename.Parent = details
+
+local uicorner_14 = Instance.new("UICorner")
+uicorner_14.Parent = rename
+
+local type = Instance.new("TextButton")
+type.Font = Enum.Font.Gotham
+type.Text = "Type: String"
+type.TextColor3 = Color3.new(1, 1, 1)
+type.TextScaled = true
+type.TextSize = 14
+type.TextWrapped = true
+type.BackgroundColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+type.BorderColor3 = Color3.new(0, 0, 0)
+type.BorderSizePixel = 0
+type.Position = UDim2.new(0.517460346, 0, 0.827906966, 0)
+type.Size = UDim2.new(0, 134, 0, 26)
+type.Visible = true
+type.Name = "Type"
+type.Parent = details
+
+local uicorner_15 = Instance.new("UICorner")
+uicorner_15.Parent = type
+
+local ne_2 = Instance.new("Frame")
+ne_2.BackgroundColor3 = Color3.new(1, 1, 1)
+ne_2.BackgroundTransparency = 1
+ne_2.BorderColor3 = Color3.new(0, 0, 0)
+ne_2.BorderSizePixel = 0
+ne_2.Size = UDim2.new(1, 0, 1, 0)
+ne_2.Visible = true
+ne_2.Name = "NE"
+ne_2.Parent = tabs_2
+
+local details_2 = Instance.new("Frame")
+details_2.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
+details_2.BorderColor3 = Color3.new(0, 0, 0)
+details_2.BorderSizePixel = 0
+details_2.Position = UDim2.new(0.0146137783, 0, 0.0343346335, 0)
+details_2.Size = UDim2.new(0, 464, 0, 215)
+details_2.Visible = true
+details_2.Name = "Details"
+details_2.Parent = ne_2
+
+local uicorner_16 = Instance.new("UICorner")
+uicorner_16.Parent = details_2
+
+local fire_2 = Instance.new("TextButton")
+fire_2.Font = Enum.Font.Gotham
+fire_2.Text = "Running: No"
+fire_2.TextColor3 = Color3.new(1, 1, 1)
+fire_2.TextScaled = true
+fire_2.TextSize = 14
+fire_2.TextWrapped = true
+fire_2.BackgroundColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+fire_2.BorderColor3 = Color3.new(0, 0, 0)
+fire_2.BorderSizePixel = 0
+fire_2.Position = UDim2.new(0.028571425, 0, 0.823255837, 0)
+fire_2.Size = UDim2.new(0, 144, 0, 26)
+fire_2.Visible = true
+fire_2.Name = "Fire"
+fire_2.Parent = details_2
+
+local uicorner_17 = Instance.new("UICorner")
+uicorner_17.Parent = fire_2
+
+local rename_2 = Instance.new("TextLabel")
+rename_2.Font = Enum.Font.Gotham
+rename_2.RichText = true
+rename_2.Text = "Mode: Float"
+rename_2.TextColor3 = Color3.new(1, 1, 1)
+rename_2.TextSize = 14
+rename_2.TextXAlignment = Enum.TextXAlignment.Left
+rename_2.BackgroundColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+rename_2.BorderColor3 = Color3.new(0, 0, 0)
+rename_2.BorderSizePixel = 0
+rename_2.Position = UDim2.new(0.0285714287, 0, 0.0604651161, 0)
+rename_2.Size = UDim2.new(0, 297, 0, 29)
+rename_2.Visible = true
+rename_2.Name = "REName"
+rename_2.Parent = details_2
+
+local uicorner_18 = Instance.new("UICorner")
+uicorner_18.Parent = rename_2
+
+local fw = Instance.new("TextButton")
+fw.Font = Enum.Font.Gotham
+fw.Text = ">"
+fw.TextColor3 = Color3.new(1, 1, 1)
+fw.TextScaled = true
+fw.TextSize = 14
+fw.TextWrapped = true
+fw.BackgroundColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+fw.BorderColor3 = Color3.new(0, 0, 0)
+fw.BorderSizePixel = 0
+fw.Position = UDim2.new(0.136502758, 0, 0.241860464, 0)
+fw.Size = UDim2.new(0, 38, 0, 26)
+fw.Visible = true
+fw.Name = "FW"
+fw.Parent = details_2
+
+local uicorner_19 = Instance.new("UICorner")
+uicorner_19.Parent = fw
+
+local bw = Instance.new("TextButton")
+bw.Font = Enum.Font.Gotham
+bw.Text = "<"
+bw.TextColor3 = Color3.new(1, 1, 1)
+bw.TextScaled = true
+bw.TextSize = 14
+bw.TextWrapped = true
+bw.BackgroundColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+bw.BorderColor3 = Color3.new(0, 0, 0)
+bw.BorderSizePixel = 0
+bw.Position = UDim2.new(0.0454775058, 0, 0.241860464, 0)
+bw.Size = UDim2.new(0, 38, 0, 26)
+bw.Visible = true
+bw.Name = "BW"
+bw.Parent = details_2
+
+local uicorner_20 = Instance.new("UICorner")
+uicorner_20.Parent = bw
+
+local cm = Instance.new("TextButton")
+cm.Font = Enum.Font.Gotham
+cm.Text = "Claim Method: No"
+cm.TextColor3 = Color3.new(1, 1, 1)
+cm.TextScaled = true
+cm.TextSize = 14
+cm.TextWrapped = true
+cm.BackgroundColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+cm.BorderColor3 = Color3.new(0, 0, 0)
+cm.BorderSizePixel = 0
+cm.Position = UDim2.new(0.358312815, 0, 0.823255837, 0)
+cm.Size = UDim2.new(0, 144, 0, 26)
+cm.Visible = true
+cm.Name = "CM"
+cm.Parent = details_2
+
+local uicorner_21 = Instance.new("UICorner")
+uicorner_21.Parent = cm
 
 local text_label = Instance.new("TextLabel")
-text_label.Font = Enum.Font.Unknown
-text_label.Text = "Skidbeater Silver a0.1"
+text_label.Font = Enum.Font.Gotham
+text_label.Text = "Due to a user the setsimulationradius() method has been patched. Meaning V1 & V2 Are way weaker than before. The Claim Method works by constantly setting your .CFrame to a random part in your radius"
 text_label.TextColor3 = Color3.new(1, 1, 1)
 text_label.TextScaled = true
 text_label.TextSize = 14
 text_label.TextWrapped = true
 text_label.TextXAlignment = Enum.TextXAlignment.Left
-text_label.BackgroundColor3 = Color3.new(1, 1, 1)
-text_label.BackgroundTransparency = 1
+text_label.TextYAlignment = Enum.TextYAlignment.Top
+text_label.BackgroundColor3 = Color3.new(0.137255, 0.137255, 0.137255)
 text_label.BorderColor3 = Color3.new(0, 0, 0)
 text_label.BorderSizePixel = 0
-text_label.Size = UDim2.new(0, 471, 0, 44)
+text_label.Position = UDim2.new(0.698275864, 0, 0.0604651161, 0)
+text_label.Size = UDim2.new(0, 129, 0, 190)
 text_label.Visible = true
-text_label.Parent = frame_2
+text_label.Parent = details_2
 
-local uigradient_2 = Instance.new("UIGradient")
-uigradient_2.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.new(1, 1, 1)), ColorSequenceKeypoint.new(0.48788928985595703, Color3.new(0.6, 0.6, 0.6)), ColorSequenceKeypoint.new(1, Color3.new(1, 1, 1))})
-uigradient_2.Rotation = 25
-uigradient_2.Parent = text_label
+local uicorner_22 = Instance.new("UICorner")
+uicorner_22.Parent = text_label
 
-local local_script = Instance.new("LocalScript")
-local_script.Parent = frame
+local dragify = Instance.new("LocalScript")
+dragify.Name = "Dragify"
+dragify.Parent = main
 
-local smooth_drag = Instance.new("LocalScript")
-smooth_drag.Name = "SmoothDrag"
-smooth_drag.Parent = frame
+local ptcore = Instance.new("LocalScript")
+ptcore.Name = "PTCORE"
+ptcore.Parent = screen_gui
 
 --//Modules
 
@@ -79,9 +463,9 @@ local modules = {}
 
 --// Scripts
 
--- LocalScript
+-- Dragify
 task.spawn(function()
-	local script = local_script
+	local script = dragify
 
 	local oldreq = require
 	local function require(target)
@@ -91,44 +475,50 @@ task.spawn(function()
 		return oldreq(target)
 	end
 
-	local P = game.Players.LocalPlayer
-	local C = P.Character
+	local UserInputService = game:GetService("UserInputService")
 	
-	P.CharacterAdded:Connect(function(M)
-		C = M
-	end)
-	local A = false
+	local gui = script.Parent
 	
-	local MaxSim_Radius = 1000
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
 	
-	local function NWreck()
-		task.spawn(function()
-			local Root = C:FindFirstChildOfClass("Humanoid").RootPart
-			if Root and A == false then
-				A = true
-				local Past = Root.CFrame
-				workspace.CurrentCamera.CameraType = Enum.CameraType.Scriptable
-				Root.CFrame = Root.CFrame * CFrame.new(MaxSim_Radius * 4, 0, MaxSim_Radius * 4)
-				Root.CFrame = CFrame.new(Root.CFrame.X, workspace.FallenPartsDestroyHeight + 10, Root.CFrame.Z)
-				task.wait(1 / 20)
-				Root.Anchored = true
-				task.wait(1)
-				Root.Anchored = false
-				workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
-				Root.CFrame = Past
-				A = false
-			end
-		end)
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
 	end
 	
-	script.Parent.WR.MouseButton1Down:Connect(function()
-		NWreck()
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+	
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
 	end)
 end)
 
--- SmoothDrag
+-- PTCORE
 task.spawn(function()
-	local script = smooth_drag
+	local script = ptcore
 
 	local oldreq = require
 	local function require(target)
@@ -137,43 +527,244 @@ task.spawn(function()
 		end
 		return oldreq(target)
 	end
-	local Drag = script.Parent
-	gsCoreGui = game:GetService("CoreGui")
-	gsTween = game:GetService("TweenService")
-	local UserInputService = game:GetService("UserInputService")
-		local dragging
-		local dragInput
-		local dragStart
-		local startPos
-		local function update(input)
-			local delta = input.Position - dragStart
-			local dragTime = 0.04
-			local SmoothDrag = {}
-			SmoothDrag.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-			local dragSmoothFunction = gsTween:Create(Drag, TweenInfo.new(dragTime, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), SmoothDrag)
-			dragSmoothFunction:Play()
-		end
-		Drag.InputBegan:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-				dragging = true
-				dragStart = input.Position
-				startPos = Drag.Position
-				input.Changed:Connect(function()
-					if input.UserInputState == Enum.UserInputState.End then
-						dragging = false
-					end
-				end)
-			end
-		end)
-		Drag.InputChanged:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-				dragInput = input
-			end
-		end)
-		UserInputService.InputChanged:Connect(function(input)
-			if input == dragInput and dragging and Drag.Size then
-				update(input)
-			end
-		end)
+
+	repeat task.wait() until game.Loaded
 	
+	local P=game.Players.LocalPlayer
+	local C=P.Character
+	
+	local M=P:GetMouse()
+	local v3,sin,cl=Vector3.new,math.sin,os.clock
+	
+	local Limbs={}
+	local Am=1
+	
+	P.CharacterAdded:Connect(function(CH)
+		C=CH
+		task.wait(0.25)
+		for _, x in pairs(C:GetDescendants()) do
+			if x:IsA("BasePart") then
+				table.insert(Limbs, x)
+				Am=Am+1
+			end
+		end
+	end)
+	for _, x in pairs(C:GetDescendants()) do
+		if x:IsA("BasePart") then
+			table.insert(Limbs, x)
+			Am=Am+1
+			print(x)
+		end
+	end
+	
+	local RunService=game:GetService("RunService")
+	local Debris=game:GetService("Debris")
+	
+	local GUI=script.Parent
+	local Main=GUI.Main
+	local Tabs=Main.Tabs
+	local TopBar=Main.TopBar
+	local TabTable = {}
+	local CurrentTab=Tabs.RE
+	
+	for _, x in pairs(TopBar.Tabs:GetChildren())  do
+		if x:IsA("TextButton")  then
+			x.MouseButton1Click:Connect(function()
+				for _, v in pairs(Tabs:GetChildren()) do
+					if v.Name == x.Name and v:IsA("Frame") then
+						CurrentTab=v
+						CurrentTab.Visible=true
+					elseif v:IsA("Frame") and v.Name ~= x.Name then
+						v.Visible=false
+					end
+				end
+			end)
+		end
+	end
+		
+	
+	-- Functions
+	
+	-- Remotes
+	
+	local RE=Tabs.RE
+	local Fire=RE.Details.Fire
+	local Data=" "
+	local Remote=nil
+	local Cons={}
+	
+	local function GetRemotes()
+		local T={}
+		for _, x in pairs(game.ReplicatedStorage:GetDescendants()) do
+			if x:IsA("RemoteEvent") then
+				table.insert(T, x)
+			end
+		end
+		return T
+	end
+	
+	local function AddButton(NRemote)
+		local text_button = Instance.new("TextButton")
+		text_button.Font = Enum.Font.Gotham
+		text_button.Text = NRemote.Name
+		text_button.TextColor3 = Color3.new(1, 1, 1)
+		text_button.TextScaled = true
+		text_button.TextSize = 14
+		text_button.TextWrapped = true
+		text_button.TextXAlignment = Enum.TextXAlignment.Left
+		text_button.BackgroundColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+		text_button.BorderColor3 = Color3.new(0, 0, 0)
+		text_button.BorderSizePixel = 0
+		text_button.Size = UDim2.new(0, 108, 0, 20)
+		text_button.Visible = true
+		text_button.Parent = RE.Explorer.Scroller
+		
+		local ab=text_button.MouseButton1Click:Connect(function()
+			Remote=NRemote
+			RE.Details.REName.Text=NRemote.Name
+			RE.Details.Code.Text=" "
+		end)
+		table.insert(Cons,ab)
+	
+		local uicorner = Instance.new("UICorner")
+		uicorner.Parent = text_button
+	end
+	
+	local function RefreshExplorer()
+		for _, x in pairs(Cons) do
+			x:Disconnect()
+			x=nil
+		end
+		for _, x in pairs(RE.Explorer.Scroller:GetChildren()) do
+			if x:IsA("TextButton") then
+				x:Destroy()
+			end
+		end
+		for _, x in pairs(GetRemotes()) do
+			AddButton(x)
+		end
+	end
+	
+	game.ReplicatedStorage.DescendantAdded:Connect(function()
+	RefreshExplorer()
+	end)
+	
+	RE.Details.Code.Changed:Connect(function(P)
+		if P == "Text" then
+			Data=RE.Details.Code.Text
+		end
+	end)
+	
+	RefreshExplorer()
+	
+	Fire.MouseButton1Click:Connect(function()
+		if Remote ~= nil then
+			Remote:FireServer(Data)
+		end
+	end)
+	
+	-- NE
+	
+	local NE=Tabs.NE
+	local Details=NE.Details
+	local ReclaimM=false
+	
+	local Running = false
+	local ModeID=1
+	local ModesA=0
+	local Modes={"Float", "Impulse", "Mouse", "MouseSpin", "LookVector", "UpVector", "Character", "CFrame", "AngleCFrame"}
+	
+	for _, x in pairs(Modes) do
+		if x then
+			print(x)
+			ModesA=ModesA+1
+		end
+	end
+	
+	local function Manipulate(Part)
+		if Part.ReceiveAge == 0 then
+			if ModeID == 1 then
+				Part.Velocity=Vector3.new(0, 15, 0)
+			elseif ModeID == 2 then
+				Part:AppyImpulse(Vector3.new(math.random(-75,75),0,math.random(-75,75)))
+			elseif ModeID == 3 then
+				Part.CFrame=M.Hit
+			elseif ModeID == 4 then
+				Part.CFrame=M.Hit
+				Part.RotVelocity=Vector3.new(0, 9999, 0)
+			elseif ModeID == 5 then
+				Part.Velocity=Part.CFrame.LookVector*100
+			elseif ModeID == 6 then
+				Part.Velocity=Part.CFrame.UpVector*100
+			elseif ModeID == 7 then
+				if Am > 1 then
+					local L=Limbs[math.random(1,Am)]
+					if L then
+						Part.CanCollide = false
+						Part.CFrame=L.CFrame
+					end
+				end
+			elseif ModeID == 8 then
+				Part.CFrame=Part.CFrame*CFrame.new(0,0, 1)
+			elseif ModeID == 9 then
+				Part.CFrame=Part.CFrame*CFrame.new(0,0, 1)*CFrame.fromEulerAnglesXYZ(2,2,2)
+			end
+			Part.Velocity=v3(0,25.1,0)
+		end
+	end
+	
+	RunService.Heartbeat:Connect(function()
+		if Running == true then
+			for _, x in pairs(workspace:GetDescendants()) do
+				if x:IsA("BasePart") and x.Parent.ClassName ~= "Accessory" and not x.Parent:FindFirstChildOfClass("Humanoid") and x.Anchored == false and not x:FindFirstChildOfClass("JointInstance") then
+					if x.ReceiveAge == 0 and (x.Position - C:FindFirstChildOfClass("Humanoid").RootPart.Position).Magnitude < gethiddenproperty(P,"SimulationRadius") then
+						Manipulate(x)
+						if ReclaimM == true and ModeID ~= 3 and ModeID ~= 4 and ModeID ~= 7 then
+							C:FindFirstChildOfClass("Humanoid").RootPart.CFrame=x.CFrame
+						end
+					end
+				end
+			end
+		end
+	end)
+	
+	Details.Fire.MouseButton1Click:Connect(function()
+		Running = not Running
+		if Running == true then
+			Details.Fire.Text="Running: Yes"
+		else
+			Details.Fire.Text="Running: No"
+		end
+	end)
+	
+	Details.CM.MouseButton1Click:Connect(function()
+		ReclaimM = not ReclaimM
+		if ReclaimM == true then
+			Details.CM.Text="Claim Method: Yes"
+		else
+			Details.CM.Text="Claim Method: No"
+		end
+	end)
+	
+	Details.FW.MouseButton1Click:Connect(function()
+		ModeID = ModeID + 1
+		if ModeID > ModesA then
+			ModeID=1
+		end
+		if ModeID < 1 then
+			ModeID=1
+		end
+		Details.REName.Text = "Mode: "..Modes[ModeID]
+	end)
+	
+	Details.BW.MouseButton1Click:Connect(function()
+		ModeID = ModeID - 1
+		if ModeID > ModesA then
+			ModeID=ModesA
+		end
+		if ModeID < 1 then
+			ModeID=ModesA
+		end
+		Details.REName.Text = "Mode: "..Modes[ModeID]
+	end)
 end)
